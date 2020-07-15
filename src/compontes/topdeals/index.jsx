@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import {Container,Row,Col,Image, Button} from 'react-bootstrap'
-import Veg from '../../assets/image/vegetable-icons.svg';
+import Veg from '../../assets/image/vegetable.svg';
 
 export class Topdeals extends React.Component{
   constructor(props) {
@@ -13,22 +13,19 @@ export class Topdeals extends React.Component{
   render() {
       return (
 
-          <Container className="bestseller">
-            <Row>
-              <Row xl={2}>
+          <Container>
+            <Row  className="bestseller">
+              <Row >
                 <div className="title">Bestseller</div>
               </Row>
-              <Row xl={10} item>
-              <Col xl={3} >
+              <Row xl ={12} className="card">
+              <Col xl={4} >
                   <Cart />
                 </Col>
-                <Col xl={3} >
+                <Col xl={4} >
                   <Cart />
                 </Col>
-                <Col  xl={3} >
-                  <Cart />
-                </Col>
-                <Col xl={3} >
+                <Col xl={4} >
                   <Cart />
                 </Col>
               </Row>            
@@ -38,31 +35,30 @@ export class Topdeals extends React.Component{
   }
 }
 function Cart(){
-  return(<Col className="card">
+  return(<Col className="card-item">
   <Row className="imgBX">
     <Image className="Image" src={Veg} className="item-image" alt="Logo"/>
   </Row>
   <Row className="contentBX">
       <h2>Fruits Name</h2>
-  </Row>
-  <Row className="quantity">
-    <h3>Quantity :</h3>
-    <span>0.5 Kg</span>
-    <span>1 Kg</span>
-    <span>2 kKg</span>
-    <span>5 Kg</span>
-  </Row>
-  <Row className="Price">
-    <h3>Price :</h3>
-    <span>Rs 50</span>
-  </Row>
-  <Row>
-  <Col>
-      <Button>Buy Now</Button>
-    </Col>
-    <Col>
-      <Button>Add Cart</Button>
-    </Col>
+      <Row className="quantity">
+        <h3>Quantity :</h3>
+        <span>0.5 Kg</span>
+        <span>1 Kg</span>
+        <span>2 Kg</span>
+      </Row>
+      <Row className="Price">
+        <h3>Price :</h3>
+        <span>Rs 50</span>
+      </Row>    
+      <Row>
+        <Col>
+          <Button>Buy Now</Button>
+        </Col>
+        <Col>
+          <Button>Add Cart</Button>
+        </Col>
+      </Row>
   </Row>
 </Col>)
 }

@@ -17,24 +17,22 @@ export class Home extends React.Component{
       
             <Container fluid={true}>
             <Col>
-                <Row className=" jumbo home-title" >
-                    <Col className="heading">
+                <Row xl={12} className=" jumbo home-title" >
+                    <Col xl={6} className="heading">
                         <p>
                             Buy fresh fruits <span><br></br>& vegitable</span>
                             <Search />
                         </p>
                     </Col>               
-                    <Col>
+                    <Col xl={6}>
                         <Image src={Veg} className="image" alt="Logo"/>
                     </Col>
                 </Row>
-                <Row>
+                <Col xl={12}>
                   <Topdeals />
-                </Row>
+                </Col>
             </Col>
           </Container>
-          
-          
             );
   }
 }

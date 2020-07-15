@@ -6,7 +6,9 @@ import {
   Link
 } from "react-router-dom";
 import {LoginPage} from '../login'
+
 import {Home} from '../../pages/home'
+import {Cart} from '../../pages/cart'
 import cartImg from "./../../assets/image/cart.png" 
 import './style.scss'
 export default function Nav() {
@@ -51,6 +53,12 @@ export default function Nav() {
           </Route>
           <Route path="/Login">
             <LoginPage />
+          </Route>
+          <Route path="/search">
+            <Search />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route> <Route path="/">
             <Home />
           </Route>
@@ -69,4 +77,7 @@ function About() {
 
 function Users() {
   return <h2>Users</h2>;
+}
+function Search() {
+  return <h2>Search</h2>;
 }
