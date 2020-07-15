@@ -1,0 +1,21 @@
+.search{
+    position: relative;
+    // width
+    height: 2rem;
+    // min-width: 80vh;
+    top: 1rem;
+    height: 100%;
+    .search-text{
+        background: none !important ;
+        border: none; 
+        color: white;
+        font-size: 2rem;
+    }
+    .search-icon{
+    // height: 2rem;
+    background:none;
+    border: none;
+    align-items: center;
+}
+
+}
