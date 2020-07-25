@@ -7,8 +7,9 @@ import {
 } from "react-router-dom";
 import {LoginPage} from '../login'
 
-import {Home} from '../../pages/home'
-import {Cart} from '../../pages/cart'
+import {Home} from '../../pages/home';
+import {Profile} from '../../pages/profile'
+import {Cart} from '../../pages/cart';
 import cartImg from "./../../assets/image/cart.png" 
 import './style.scss'
 export default function Nav() {
@@ -49,7 +50,7 @@ export default function Nav() {
             <About />
           </Route>
           <Route path="/users">
-            <Users />
+            <Profile />
           </Route>
           <Route path="/Login">
             <LoginPage />
