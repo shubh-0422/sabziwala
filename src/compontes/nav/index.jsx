@@ -8,7 +8,7 @@ import {
 import {LoginPage} from '../login'
 
 import {Home} from '../../pages/home';
-import {Profile} from '../../pages/profile'
+import {User} from '../../pages/user'
 import {Cart} from '../../pages/cart';
 import cartImg from "./../../assets/image/cart.png" 
 import './style.scss'
@@ -27,7 +27,7 @@ export default function Nav() {
                 <Link className="menu-nav__link" to="/about">About</Link>
               </li>
               <li class="menu-nav__item">
-                <Link className="menu-nav__link" to="/users">Users</Link>
+                <Link className="menu-nav__link" to="/user">User</Link>
               </li>
               <li class="menu-nav__item">
                 <Link className="menu-nav__link" to="/login">Login</Link>
@@ -49,8 +49,8 @@ export default function Nav() {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/users">
-            <Profile />
+          <Route path="/user">
+            <User />
           </Route>
           <Route path="/Login">
             <LoginPage />
