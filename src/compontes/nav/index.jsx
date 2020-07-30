@@ -1,48 +1,80 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import {LoginPage} from '../login'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { auth } from "./../../firebase/firebase.utils";
 
-import {Home} from '../../pages/home';
-import {User} from '../../pages/user'
-import {Cart} from '../../pages/cart';
-import cartImg from "./../../assets/image/cart.png" 
-import './style.scss'
-export default function Nav() {
-  return (
-    <Router>
-      <div>
-        <header>
-          <div className="title">Sabzi<span>wala</span></div>
-          <nav class="nav">
-            <ul class="menu-nav">
-             <li class="menu-nav__item">
-                <Link className="menu-nav__link" to="/">Home</Link>
-              </li>
-              <li class="menu-nav__item">
-                <Link className="menu-nav__link" to="/about">About</Link>
-              </li>
-              <li class="menu-nav__item">
-                <Link className="menu-nav__link" to="/user">User</Link>
-              </li>
-              <li class="menu-nav__item">
-                <Link className="menu-nav__link" to="/login">Login</Link>
-              </li>
-            </ul>
-          </nav>
-          <div className="logo">
-            <Link className="menu-nav__link" to="/cart">
-              <img src={cartImg} /> 
-            </Link>
-          </div>
+import { LoginPage } from "../login";
+import { Home } from "../../pages/home";
+import { User } from "../../pages/user";
+import { Cart } from "../../pages/cart";
+import cartImg from "./../../assets/image/cart.svg";
+import "./style.scss";
+export default class Nav extends React.Component {
+  constructor() {
+    super();
 
-        </header>
+    this.state = {
+      currentUser: null,
+    };
+  }
+  unsubscribeFromAuth = null;
 
-</div>
+  componentDidMount() {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+      this.setState({ currentUser: user });
+      console.log(user);
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribeFromAuth();
+  }
+  render() {
+    return (
+      <Router>
+        <div>
+          <header>
+            <div className="title">
+              Sabzi<span>wala</span>
+            </div>
+            <nav class="nav">
+              <ul class="menu-nav">
+                <li class="menu-nav__item">
+                  <Link className="menu-nav__link" to="/">
+                    Home
+                  </Link>
+                </li>
+                <li class="menu-nav__item">
+                  <Link className="menu-nav__link" to="/about">
+                    About
+                  </Link>
+                </li>
+                <li class="menu-nav__item">
+                  <Link className="menu-nav__link" to="/user">
+                    User
+                  </Link>
+                </li>
+                <li class="menu-nav__item">
+                  {this.state.currentUser ? (
+                    <Link 
+                    className="menu-nav__link" 
+                    to="/logout"
+                    onClick={()=>auth.signOut()}>
+                      Log out
+                    </Link>
+                  ) : (
+                    <Link className="menu-nav__link" to="/login">
+                      Login
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </nav>
+            <div className="logo">
+              <Link className="menu-nav__link" to="/cart">
+                <img src={cartImg} />
+              </Link>
+            </div>
+          </header>
+        </div>
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -60,16 +92,17 @@ export default function Nav() {
           </Route>
           <Route path="/cart">
             <Cart />
-          </Route> <Route path="/">
+          </Route>{" "}
+          <Route path="/">
             <Home />
           </Route>
           <Route path="/cart">
             <Home />
           </Route>
         </Switch>
-      
-    </Router>
-  );
+      </Router>
+    );
+  }
 }
 
 function About() {

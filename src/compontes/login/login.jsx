@@ -1,5 +1,6 @@
 import React from "react";
-import loginImg from "./../../assets/image/download.jpeg" 
+import loginImg from "./../../assets/image/download.jpeg" ;
+import {signInWithGoogle} from './../../firebase/firebase.utils'
  
 
 export class Login extends React.Component{
@@ -30,6 +31,7 @@ export class Login extends React.Component{
                 </div>
                 <div className="footer">
                     <button className="btn" type="button">login</button>
+                    <button className="btn" onClick={signInWithGoogle} >sign in with google</button>
                 </div>
              </div>
          )}

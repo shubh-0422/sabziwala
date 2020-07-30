@@ -4,7 +4,7 @@ import ProfileImage from '../../assets/image/profile.svg';
 import { Container, Row,Col,Image,Dropdown,DropdownButton, Button } from 'react-bootstrap';
 
 
-export class saveProfile extends React.Component{
+export class SaveProfile extends React.Component{
     constructor(props) {
       super(props);
       this.state = {
@@ -49,19 +49,16 @@ export class saveProfile extends React.Component{
                             <p>{this.state.Age} yr</p>
                         </div>
                     </div>
-                </div>
-              
+                </div>              
               <div className="Address">
                     <h3>Address</h3>
                     <div className="data">
                         <h4>{this.state.Addressl1}</h4>
                         <p>{this.state.Addressl2}</p>
                     </div>
-                    <Button>Edit Profile</Button>
                 </div>
             </div>
         </div>
-
         );
     }
   }

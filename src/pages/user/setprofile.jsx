@@ -4,7 +4,7 @@ import ProfileImage from '../../assets/image/profile.svg';
 import { Container, Row,Col,Image,Dropdown,DropdownButton,Form, Button } from 'react-bootstrap';
 
 
-export class setProfile extends React.Component{
+export class SetProfile extends React.Component{
     constructor(props) {
       super(props);
       this.state = {
@@ -111,13 +111,10 @@ export class setProfile extends React.Component{
                                 </Form.Group>
                             </div>
                         </div>
-                        <Button onClick={() => this.save()}>Save Profile</Button>
-
+                    </div>
                 </div>
-            </div>
-        </div>
-        
+            </div>        
         );
     }
-  }
+}
   

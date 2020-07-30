@@ -1,7 +1,7 @@
 
 .bestseller{
-    left: -36%;
-    right: 36%;
+//     left: -36%;
+//     right: 36%;
     position: relative;
     top:6rem;   
     .title{
@@ -16,8 +16,8 @@
 }
 .card-item{
     position: relative;
-    width: 320px;
-    height: 450px;
+    width: 300px;
+    height: 400px;
     background: #232323;
     border-radius: 20px;
     align-items: center;
@@ -113,6 +113,7 @@
             }
         }
         Button{
+            margin: 0;
             opacity: 0;
                 visibility:hidden;
         }
