@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { auth } from "./../../firebase/firebase.utils";
+import { auth, createuser } from "./../../firebase/firebase.utils";
 
 import { LoginPage } from "../login";
 import { Home } from "../../pages/home";
@@ -19,11 +19,26 @@ export default class Nav extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
-      this.setState({ currentUser: user });
-      console.log(user);
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createuser(userAuth)
+
+        userRef.onSnapshot(snapShot => {
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data()
+            }
+          });
+
+          console.log(this.state);
+        });
+      }
+
+      this.setState({ currentUser: userAuth });
     });
   }
+
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
@@ -54,10 +69,11 @@ export default class Nav extends React.Component {
                 </li>
                 <li class="menu-nav__item">
                   {this.state.currentUser ? (
-                    <Link 
-                    className="menu-nav__link" 
-                    to="/logout"
-                    onClick={()=>auth.signOut()}>
+                    <Link
+                      className="menu-nav__link"
+                      to="/logout"
+                      onClick={() => auth.signOut()}
+                    >
                       Log out
                     </Link>
                   ) : (

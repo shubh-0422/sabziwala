@@ -35,7 +35,7 @@ export class LoginPage extends React.Component{
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     return (
-      <div className="App">
+    
         <div className="loginpage">
           <div className="containerpage" ref={ref => (this.container = ref)}>
             {isLogginActive && (
@@ -52,7 +52,6 @@ export class LoginPage extends React.Component{
             onClick={this.changeState.bind(this)}
           />
         </div>
-      </div>
     );
   }
 }
